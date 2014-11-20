@@ -21,5 +21,10 @@
 
 ;;; how to go from ID to entry
 
+(defn re-search
+  "Searches wordnet for all entries matching the regex."
+  [pattern])
 
-
+(defn search
+  "Searches wordnet for all entries that contain one of the supplied words as either a synonym or within it's gloss."
+  [& words])
