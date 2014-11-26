@@ -18,7 +18,7 @@
   (parser
    "S = body | Epsilon
    body = <'<p>'> content <'</p>'>
-   content = Epsilon | (misc | entry | headword | pronunciation | pos | etymology | definition | source | field | collocation-section | collocation-def | collocation-entry) content | text
+   content = Epsilon | (misc | entry | headword | pronunciation | pos | etymology | definition | source | field | collocation-section | collocation-def | collocation-entry | bold) content | text
    pos = <'<pos>'> content <'</pos>'>
    entry = <'<ent>'> content <'</ent>'>
    headword = <'<hw>'> content <'</hw>'>
@@ -30,6 +30,7 @@
    collocation-section = <'<cs>'> content <'</cs>'>
    collocation-def = <'<cd>'> content <'</cd>'>
    collocation-entry = <'<col>'> content <'</col>'>
+   bold = Epsilon (* what does bold mean? *)
    misc = #'<[a-z]*>' content #'</[a-z]*>' (* i actually do want tags here *)
    <text> = #'[a-zA-Z\\ ]*'"))
 
