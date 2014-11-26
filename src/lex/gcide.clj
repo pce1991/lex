@@ -13,22 +13,24 @@
 ;;; it to throw this away. I could dump it all in a miscellania.
 ;;; remember, regexes are greedy! risk using up more tokens than you want too
 ;;; add more marks to text and misc
+;;; I want it to throw out the actual tags and just give :definition []
 (def gcide-parser
   (parser
    "S = body | Epsilon
-   body = '<p>' content '</p>'
+   body = <'<p>'> content <'</p>'>
    content = Epsilon | (misc | entry | headword | pronunciation | pos | etymology | definition | source | field | collocation-section | collocation-def | collocation-entry) content | text
-   pos = '<pos>' content '</pos>'
-   entry = '<ent>' content '</ent>'
-   headword = '<hw>' content '</hw>'
-   pronunciation = '<pr>' content '</pr>'
-   etymology = '<ety>' content '</ety>'
-   definition = '<def>' content '</def>'
-   source = '<ets>' content '</ets>'
-   field = '<fld>' content '</fld>'
-   collocation-section = '<cs>' content '</cs>'
-   collocation-def = '<cd>' content '</cd>'
-   collocation-entry = '<col>' content '</col>'
-   misc = #'<[a-z]*>' content #'</[a-z]*>'
-   text = #'[a-zA-Z\\ ]*'"))
+   pos = <'<pos>'> content <'</pos>'>
+   entry = <'<ent>'> content <'</ent>'>
+   headword = <'<hw>'> content <'</hw>'>
+   pronunciation = <'<pr>'> content <'</pr>'>
+   etymology = <'<ety>'> content <'</ety>'>
+   definition = <'<def>'> content <'</def>'>
+   source = <'<ets>'> content <'</ets>'>
+   field = <'<fld>'> content <'</fld>'>
+   collocation-section = <'<cs>'> content <'</cs>'>
+   collocation-def = <'<cd>'> content <'</cd>'>
+   collocation-entry = <'<col>'> content <'</col>'>
+   misc = #'<[a-z]*>' content #'</[a-z]*>' (* i actually do want tags here *)
+   <text> = #'[a-zA-Z\\ ]*'"))
+
 
